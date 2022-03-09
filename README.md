@@ -22,10 +22,6 @@
 - luci-app-vssr
 
 ### 21.02
-- luci-app-cpulimit
-- luci-app-diskman
-- luci-app-fileassistant
-- luci-app-filebrowser
 - luci-app-filetransfer
 - luci-app-openclash
 - luci-app-qos
