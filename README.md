@@ -8,8 +8,6 @@
 
 ## 内置插件
 ### 18.06-k5.4 
-- luci-app-cpulimit
-- luci-app-diskman
 - luci-app-filetransfer
 - luci-app-iptvhelper
 - luci-app-openclash
