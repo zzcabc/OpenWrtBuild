@@ -20,3 +20,8 @@ CLASH_TUN_URL=$(curl -sL https://api.github.com/repos/vernesong/OpenClash/releas
 wget -qO- $OPENCLASH_MAIN_URL | tar xOvz > files/etc/openclash/core/clash
 wget -qO- $CLASH_TUN_URL | gunzip -c > files/etc/openclash/core/clash_tun
 chmod +x files/etc/openclash/core/clash*
+
+# 内置smartdns
+# mkdir -p files/etc/smartdns
+# wget -qO URL > files/etc/smartdns/custom.conf
+# wget -qO URL > files/etc/config/smartdns
