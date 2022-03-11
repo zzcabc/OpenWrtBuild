@@ -22,7 +22,6 @@
 ### 21.02
 - luci-app-filetransfer
 - luci-app-openclash
-- luci-app-qos
 - luci-app-smartdns
 - luci-app-ttyd
 - luci-app-turboacc
