@@ -1,4 +1,4 @@
-# OpenWrtBuild 精简只用
+# OpenWrtBuild 精简自用
 
 本项目Fork p3terx
 
