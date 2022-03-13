@@ -1,1 +1,278 @@
-;-rw-------
+config smartdns
+	option prefetch_domain '1'
+	option serve_expired '1'
+	option seconddns_no_speed_check '0'
+	option coredump '0'
+	option port '6053'
+	option ipv6_server '0'
+	option seconddns_port '5335'
+	option seconddns_enabled '1'
+	option seconddns_no_rule_addr '0'
+	option seconddns_no_rule_nameserver '0'
+	option seconddns_no_rule_ipset '0'
+	option seconddns_no_rule_soa '0'
+	option cache_size '20000'
+	option rr_ttl '3600'
+	option tcp_server '1'
+	option dualstack_ip_selection '0'
+	option rr_ttl_max '3600'
+	option server_name 'smartdns'
+	option seconddns_tcp_server '1'
+	option seconddns_server_group 'ocean'
+	option seconddns_no_dualstack_selection '1'
+	option force_aaaa_soa '1'
+	option enabled '1'
+	option rr_ttl_min '60'
+	option redirect 'none'
+	option seconddns_no_cache '1'
+	list old_redirect 'none'
+	list old_port '6053'
+	list old_enabled '1'
+
+config server
+	option enabled '1'
+	option type 'tcp'
+	option name '114DNS1'
+	option ip '114.114.114.114'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'tcp'
+	option name '114DNS2'
+	option ip '114.114.115.115'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'AliDNS1'
+	option ip 'https://223.5.5.5/dns-query'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'AliDNS2'
+	option ip 'https://223.6.6.6/dns-query'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'AliDNS3'
+	option ip 'https://dns.alidns.com/dns-query'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'tls'
+	option name 'AliDNS4'
+	option ip 'dns.alidns.com'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'DNSPodDNS1'
+	option ip 'https://doh.pub/dns-query'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'DNSPodDNS2'
+	option ip 'https://sm2.doh.pub/dns-query'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'DNSPodDNS3'
+	option ip 'dot.pub'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'udp'
+	option name 'CNNICSDNS1'
+	option ip '1.2.4.8'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'udp'
+	option name 'CNNICSDNS2'
+	option ip '210.2.4.8'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name '360DNS1'
+	option ip 'https://doh.360.cn/dns-query'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'tls'
+	option name '360DNS2'
+	option ip 'dot.360.cn'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'GoogleDNS1'
+	option ip 'https://dns.google/dns-query'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'tls'
+	option name 'GoogleDNS2'
+	option ip 'dns.google'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'IBMQuad91'
+	option ip 'https://dns.quad9.net/dns-query'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'IBMQuad92'
+	option ip 'https://dns11.quad9.net/dns-query'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'OpenDNS1'
+	option ip 'https://doh.opendns.com/dns-query'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'OpenDNS2'
+	option ip 'https://doh.familyshield.opendns.com/dns-query'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'CloudflareDNS1'
+	option ip 'https://1.1.1.1/dns-query'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'CloudflareDNS2'
+	option ip 'https://1.0.0.1/dns-query'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'CloudflareDNS3'
+	option ip 'https://cloudflare-dns.com/dns-query'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'AdGuardDNS1'
+	option ip 'https://dns.adguard.com/dns-query'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'AdGuardDNS2'
+	option ip 'https://dns-family.adguard.com/dns-query'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'tls'
+	option name 'AdGuardDNS3'
+	option ip 'dns.adguard.com'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'tls'
+	option name 'AdGuardDNS4'
+	option ip 'dns-family.adguard.com'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'DNS.SB1'
+	option ip 'https://doh.dns.sb/dns-query'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'https'
+	option name 'DNS.SB2'
+	option ip 'https://doh.sb/dns-query'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'tls'
+	option name 'DNS.SB3'
+	option ip 'dot.sb'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'tcp'
+	option name 'Level3DNS1'
+	option ip '4.2.2.1'
+	option server_group 'ocean'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'tcp'
+	option name 'Level3DNS2'
+	option ip '4.2.2.2'
+	option server_group 'ocean'
+	option blacklist_ip '0'
