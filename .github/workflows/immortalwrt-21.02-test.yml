@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: immortalwrt-21.02
+name: immortalwrt-21.02-test
 
 on:
   repository_dispatch:
