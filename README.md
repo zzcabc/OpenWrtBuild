@@ -5,3 +5,4 @@
 ## 构建
 - immortalwrt 18.06-k5.4
 - immortalwrt 21.02
+- immortalwrt master

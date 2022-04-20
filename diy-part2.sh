@@ -11,7 +11,7 @@
 #
 
 # Modify default IP
-# sed -i 's/192.168.1.1/10.10.10.10/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/10.10.10.10/g' package/base-files/files/bin/config_generate
 
 # 预置openclash内核
 mkdir -p files/etc/openclash/core
@@ -31,12 +31,12 @@ wget -qO- $CLASH_META_URL | gunzip -c > files/etc/openclash/core/clash_meta
 chmod +x files/etc/openclash/core/clash*
 
 # Country.mmdb
-COUNTRY_LITE_URL=https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb
-COUNTRY_FULL_URL=https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/Country.mmdb
-wget $COUNTRY_LITE_URL > files/etc/openclash/Country.mmdb
+# COUNTRY_LITE_URL=https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb
+# COUNTRY_FULL_URL=https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/Country.mmdb
+# wget $COUNTRY_LITE_URL > files/etc/openclash/Country.mmdb
 
 # meta可能要GeoIP.dat 和 GeoSite.dat
-GEOIP_URL=https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
-GEOSITE_URL=https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
-wget $GEOIP_URL > files/etc/openclash/GeoIP.dat
-wget $GEOSITE_URL > files/etc/openclash/GeoSite.dat
+# GEOIP_URL=https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
+# GEOSITE_URL=https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
+# wget $GEOIP_URL > files/etc/openclash/GeoIP.dat
+# wget $GEOSITE_URL > files/etc/openclash/GeoSite.dat
