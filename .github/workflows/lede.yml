@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: immortalwrt-21.02
+name: lede
 
 on:
   repository_dispatch:
@@ -20,11 +20,11 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: openwrt-21.02
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: x64/immortalwrt/21.02/.config
-  DIY_P1_SH: immortalwrt/immortalwrt.sh
+  CONFIG_FILE: x64/lede/.config
+  DIY_P1_SH: lede/lede.sh
   DIY_P2_SH: common.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -171,7 +171,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: 21.02-${{ steps.tag.outputs.release_tag }}
+        tag_name: lede-${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
