@@ -24,8 +24,8 @@ env:
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: x64/immortalwrt/master/.config
-  DIY_P1_SH: immortalwrt/immortalwrt.sh
-  DIY_P2_SH: common.sh
+  DIY_P1_SH: shell/immortalwrt/immortalwrt.sh
+  DIY_P2_SH: shell/common.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false

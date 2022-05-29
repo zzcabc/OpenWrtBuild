@@ -25,7 +25,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: rpi/lede/.config
   DIY_P1_SH: lede/lede.sh
-  DIY_P2_SH: common.sh
+  DIY_P2_SH: shell/common.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
