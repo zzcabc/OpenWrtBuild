@@ -5,7 +5,7 @@ config mosdns 'mosdns'
 	option syncconfig '1'
 	option not_first_start '1'
 	option enabled '0'
-	option configfile './cus_config.yaml'
+	option configfile '/etc/mosdns/config_custom.yaml'
 	option geo_auto_update '1'
 	option geo_update_week_time '2'
 
