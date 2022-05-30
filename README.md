@@ -22,7 +22,6 @@
 |luci-app-iptvhelper|iptv助手(lede无)|
 |luci-app-mosdns|mosdns|
 |luci-app-nft-qos|QoS Nftables 版|
-|luci-app-iptvhelper|iptv助手(lede无)|
 |luci-app-openclash|openclash|
 |luci-app-passwall|passwall|
 |luci-app-smartdns|smartdns|
