@@ -19,7 +19,7 @@
 |luci-app-autoreboot|定时重启|
 |luci-app-filetransfer|文件传输(默认)|
 |luci-app-firewall|防火墙(默认)|
-|luci-app-iptvhelper|iptv助手(lede无)|
+|luci-app-iptvhelper|iptv助手|
 |luci-app-mosdns|mosdns|
 |luci-app-nft-qos|QoS Nftables 版|
 |luci-app-openclash|openclash|
