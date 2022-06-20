@@ -12,4 +12,4 @@
 
 
 # 添加luci-app-mosdns
-echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns' >>feeds.conf.default
+echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns' >> feeds.conf.default
