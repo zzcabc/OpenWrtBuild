@@ -71,14 +71,17 @@ plugin:
         - addr: "https://doh.pub/dns-query"
           idle_timeout: 30
           trusted: true
-        - addr: "https://sm2.doh.pub/dns-query"
-          idle_timeout: 30
-          trusted: true
         - addr: "tls://dot.pub"
           idle_timeout: 30
           trusted: true
         - addr: "udp://1.2.4.8"
         - addr: "udp://210.2.4.8"
+        - addr: "https://doh.360.cn/dns-query"
+          idle_timeout: 30
+          trusted: true
+        - addr: "tls://dot.360.cn"
+          idle_timeout: 30
+          trusted: true
 
   - tag: forward_remote
     type: fast_forward
@@ -113,6 +116,9 @@ plugin:
           idle_timeout: 30
           trusted: true
         - addr: "https://dns.adguard.com/dns-query"
+          idle_timeout: 30
+          trusted: true
+        - addr: "tls://dns.adguard.com"
           idle_timeout: 30
           trusted: true
         - addr: "https://doh.dns.sb/dns-query"

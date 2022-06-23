@@ -91,14 +91,6 @@ config server
 config server
 	option enabled '1'
 	option type 'https'
-	option name 'DNSPodDNS2'
-	option ip 'https://sm2.doh.pub/dns-query'
-	option server_group 'cn'
-	option blacklist_ip '0'
-
-config server
-	option enabled '1'
-	option type 'https'
 	option name 'DNSPodDNS3'
 	option ip 'dot.pub'
 	option server_group 'cn'
@@ -264,15 +256,6 @@ config server
 	option type 'https'
 	option name 'DNS.SB1'
 	option ip 'https://doh.dns.sb/dns-query'
-	option server_group 'ocean'
-	option blacklist_ip '0'
-	option addition_arg ' -exclude-default-group'
-
-config server
-	option enabled '1'
-	option type 'https'
-	option name 'DNS.SB2'
-	option ip 'https://doh.sb/dns-query'
 	option server_group 'ocean'
 	option blacklist_ip '0'
 	option addition_arg ' -exclude-default-group'
