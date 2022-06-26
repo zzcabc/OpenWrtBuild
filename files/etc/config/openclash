@@ -103,7 +103,7 @@ config dns_servers
 
 config dns_servers
 	option enabled '1'
-	option group 'nameserver'
+	option group 'fallback'
 	option interface 'Disable'
 	option specific_group 'Disable'
 	option node_resolve '0'
