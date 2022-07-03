@@ -1,60 +1,57 @@
 log:
-  level: warn
+  level: info
   file: "/tmp/mosdns.log"
 
-plugin:
-  - tag: main_server
-    type: server
-    args:
-      entry:
-        - _no_ecs
-        - lazy_cache
-        - _prefer_ipv4
-        - _single_flight
-        - main_sequence
-      server:
-        - protocol: udp
-          addr: "127.0.0.1:5335"
-        - protocol: tcp
-          addr: "127.0.0.1:5335"
+include: []
 
-  - tag: main_sequence
-    type: sequence
-    args:
-      exec:
-        - if:
-            - query_is_ad_domain
-          exec:
-            - _block_with_nxdomain
-            - _return
-        - if:
-            - query_is_local_domain
-            - "!_query_is_common"
-          exec:
-            - forward_local
-            - _return
-        - if:
-            - query_is_non_local_domain
-          exec:
-            - forward_remote
-            - _return
-        - primary:
-            - forward_local
-            - if:
-                - "!response_has_local_ip"
-              exec:
-                - _drop_response
-          secondary:
-            - forward_remote
-          fast_fallback: 150
-          always_standby: true
+data_providers:
+  - tag: geoip
+    file: "/usr/share/v2ray/geoip.dat"
+    auto_reload: true
 
-  - tag: forward_local
+  - tag: geosite
+    file: "/usr/share/v2ray/geosite.dat"
+    auto_reload: true
+
+  # - tag: whitelist
+  #   file: "/etc/mosdns/rule/whitelist.txt"
+  #   auto_reload: true
+
+  # - tag: blocklist
+  #   file: "/etc/mosdns/rule/blocklist.txt"
+  #   auto_reload: true
+
+  # - tag: hosts
+  #   file: "/etc/mosdns/rule/hosts.txt"
+  #   auto_reload: true
+
+  # - tag: redirect
+  #   file: "/etc/mosdns/rule/redirect.txt"
+  #   auto_reload: true
+
+  # - tag: local_ptr
+  #   file: "/etc/mosdns/rule/local-ptr.txt"
+  #   auto_reload: true
+
+plugins:
+  - tag: lazy_cache
+    type: cache
+    args:
+      size: 200000
+      lazy_cache_ttl: 259200
+
+  - tag: modify_ttl
+    type: ttl
+    args:
+      minimal_ttl: 60
+      maximum_ttl: 3600
+
+  - tag: "forward_local"
     type: fast_forward
     args:
       upstream:
-        - addr: "udp://114.114.114.114"
-        - addr: "udp://114.114.115.115"
+        - addr: "tcp://114.114.114.114"
+        - addr: "tcp://114.114.115.115"
         - addr: "https://223.5.5.5/dns-query"
         - addr: "https://223.6.6.6/dns-query"
         - addr: "https://dns.alidns.com/dns-query"
@@ -83,7 +80,7 @@ plugin:
           idle_timeout: 30
           trusted: true
 
-  - tag: forward_remote
+  - tag: "forward_remote"
     type: fast_forward
     args:
       upstream:
@@ -128,32 +125,113 @@ plugin:
           idle_timeout: 30
           trusted: true
 
-  - tag: lazy_cache
-    type: cache
-    args:
-      size: 512000
-      lazy_cache_ttl: 259200
+  # - tag: query_is_whitelist_domain
+  #   type: query_matcher
+  #   args:
+  #     domain:
+  #       - "provider:whitelist"
+
+  # - tag: query_is_blocklist_domain
+  #   type: query_matcher
+  #   args:
+  #     domain:
+  #       - "provider:blocklist"
+
+  # - tag: query_is_hosts_domain
+  #   type: hosts
+  #   args:
+  #     hosts:
+  #       - "provider:hosts"
+
+  # - tag: query_is_redirect_domain
+  #   type: redirect
+  #   args:
+  #     rule:
+  #       - "provider:redirect"
 
   - tag: query_is_local_domain
     type: query_matcher
     args:
       domain:
-        - "ext:/usr/share/v2ray/geosite.dat:cn"
+        - "provider:geosite:cn"
 
   - tag: query_is_non_local_domain
     type: query_matcher
     args:
       domain:
-        - "ext:/usr/share/v2ray/geosite.dat:geolocation-!cn"
+        - "provider:geosite:geolocation-!cn"
 
   - tag: response_has_local_ip
     type: response_matcher
     args:
       ip:
-        - "ext:/usr/share/v2ray/geoip.dat:cn"
+        - "provider:geoip:cn"
 
   - tag: query_is_ad_domain
     type: query_matcher
     args:
       domain:
-        - "ext:/usr/share/v2ray/geosite.dat:category-ads-all"
+        - "provider:geosite:category-ads-all"
+
+  # - tag: match_local_ptr
+  #   type: query_matcher
+  #   args:
+  #     qtype: [12]
+  #     domain:
+  #       - "provider:local_ptr"
+
+  - tag: "main_sequence"
+    type: "sequence"
+    args:
+      exec:
+        # - query_is_hosts_domain
+        # - query_is_redirect_domain
+
+        # - if: query_is_whitelist_domain
+        #   exec:
+        #     - forward_local
+        #     - modify_ttl
+        #     - _return
+
+        # - if: "query_is_blocklist_domain || match_local_ptr"
+        #   exec:
+        #     - _new_nxdomain_response
+        #     - _return
+
+        - if: "query_is_ad_domain"
+          exec:
+            - _new_nxdomain_response
+            - _return
+
+        - lazy_cache
+
+        - if: query_is_local_domain
+          exec:
+            - forward_local
+            - modify_ttl
+            - _return
+
+        - if: query_is_non_local_domain
+          exec:
+            - _prefer_ipv4
+            - forward_remote
+            - modify_ttl
+            - _return
+        - primary:
+            - forward_local
+            - if: "(! response_has_local_ip) && [_response_valid_answer]"
+              exec:
+                - _drop_response
+          secondary:
+            - _prefer_ipv4
+            - forward_remote
+            - modify_ttl
+          fast_fallback: 200
+
+servers:
+  - exec: main_sequence
+    listeners:
+      - protocol: udp
+        addr: ":5335"
+      - protocol: tcp
+        addr: ":5335"
