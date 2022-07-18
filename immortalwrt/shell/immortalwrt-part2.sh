@@ -16,13 +16,13 @@ sed -i 's/192.168.1.1/10.10.10.10/g' package/base-files/files/bin/config_generat
 # 预置openclash内核
 mkdir -p files/etc/openclash/core
 # dev内核
-CLASH_DEV_URL=$(curl -sL https://api.github.com/repos/vernesong/OpenClash/releases/tags/Clash | grep /clash-linux-amd64.tar.gz | awk -F '"' '{print $4}')
+# CLASH_DEV_URL=$(curl -sL https://api.github.com/repos/vernesong/OpenClash/releases/tags/Clash | grep /clash-linux-amd64.tar.gz | awk -F '"' '{print $4}')
 # tun内核
-CLASH_TUN_URL=$(curl -sL https://api.github.com/repos/vernesong/OpenClash/releases/tags/TUN-Premium | grep /clash-linux-amd64 | awk -F '"' '{print $4}' | head -n 1)
+# CLASH_TUN_URL=$(curl -sL https://api.github.com/repos/vernesong/OpenClash/releases/tags/TUN-Premium | grep /clash-linux-amd64 | awk -F '"' '{print $4}' | head -n 1)
 # d大的普核
-# CLASH_DEV_URL=$(curl -sL https://api.github.com/repos/Dreamacro/clash/releases/latest | grep /clash-linux-amd64-v1 | awk -F '"' '{print $4}')
+CLASH_DEV_URL=$(curl -sL https://api.github.com/repos/Dreamacro/clash/releases/latest | grep /clash-linux-amd64-v1 | awk -F '"' '{print $4}')
 # d大的premium核
-# CLASH_TUN_URL=$(curl -sL https://api.github.com/repos/Dreamacro/clash/releases/tags/premium | grep /clash-linux-amd64 | awk -F '"' '{print $4}' | head -n 1)
+CLASH_TUN_URL=$(curl -sL https://api.github.com/repos/Dreamacro/clash/releases/tags/premium | grep /clash-linux-amd64 | awk -F '"' '{print $4}' | head -n 1)
 # meta核
 CLASH_META_URL=$(curl -sL https://api.github.com/repos/MetaCubeX/Clash.Meta/releases/tags/Prerelease-Alpha | grep /Clash.Meta-linux-amd64-compatible-alpha | awk -F '"' '{print $4}' | head -n 1)
 # 下载clash内核
@@ -36,6 +36,7 @@ chmod +x files/etc/openclash/core/clash*
 COUNTRY_LITE_URL=https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb
 # COUNTRY_FULL_URL=https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/Country.mmdb
 wget -qO- $COUNTRY_LITE_URL > files/etc/openclash/Country.mmdb
+# wget -qO- $COUNTRY_FULL_URL > files/etc/openclash/Country.mmdb
 
 chmod +rw files/etc/openclash/Country.mmdb
 

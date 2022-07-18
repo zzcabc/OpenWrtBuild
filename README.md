@@ -8,7 +8,6 @@
 |[immortalwrt](https://github.com/immortalwrt/immortalwrt/tree/openwrt-18.06-k5.4)|18.06-k5.4|
 |[immortalwrt](https://github.com/immortalwrt/immortalwrt)|21.02|
 |[immortalwrt](https://github.com/immortalwrt/immortalwrt/tree/master)|master|
-|[lede](https://github.com/coolsnowwolf/lede)|master|
 
 
 ## 插件列表
@@ -16,9 +15,8 @@
 |英文名称|中文名称|
 |--|--|
 |luci-app-argon-config|argon主题配置|
+|luci-app-arpbind|ip/MAC绑定|
 |luci-app-autoreboot|定时重启|
-|luci-app-filetransfer|文件传输(默认)|
-|luci-app-firewall|防火墙(默认)|
 |luci-app-iptvhelper|iptv助手|
 |luci-app-mosdns|mosdns|
 |luci-app-nft-qos|QoS Nftables 版|
@@ -30,7 +28,6 @@
 |luci-app-turboacc|turboacc|
 |luci-app-unblockneteasemusic|网易云解锁|
 |luci-app-upnp|端口转发|
-|luci-app-vlmcsd|Windows系统激活|
 |luci-app-webadmin|web管理|
 
 ## 改动
@@ -46,5 +43,5 @@
 10. openclash `选择Redit-Host的TUN混合模式`
 11. openclash `GEO数据库每周二0点更新`
 12. openclash `集成dev内核、TUN内核、和Meta的alpha内核`
-13. openclash `默认上游DNS为smartdns`
+13. openclash `默认上游DNS为smartdns和mosdns`
 14. 默认 `关闭QoSNftables`
