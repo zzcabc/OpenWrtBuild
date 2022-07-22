@@ -25,9 +25,10 @@ config smartdns
 	option seconddns_no_speed_check '1'
 	option seconddns_no_dualstack_selection '1'
 	option force_aaaa_soa '1'
+	option enabled '1'
 	list old_redirect 'none'
 	list old_port '6053'
-	list old_enabled '0'
+	list old_enabled '1'
 
 config server
 	option enabled '1'
@@ -341,3 +342,4 @@ config server
 	option server_group 'ocean'
 	option blacklist_ip '0'
 	option addition_arg ' -exclude-default-group'
+
