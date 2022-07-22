@@ -26,7 +26,7 @@ CLASH_TUN_URL=$(curl -sL https://api.github.com/repos/Dreamacro/clash/releases/t
 # meta核
 CLASH_META_URL=$(curl -sL https://api.github.com/repos/MetaCubeX/Clash.Meta/releases/tags/Prerelease-Alpha | grep /Clash.Meta-linux-amd64-compatible-alpha | awk -F '"' '{print $4}' | head -n 1)
 # 下载clash内核
-wget -qO- $CLASH_DEV_URL | tar xOvz > files/etc/openclash/core/clash
+wget -qO- $CLASH_DEV_URL | gunzip -c > files/etc/openclash/core/clash
 wget -qO- $CLASH_TUN_URL | gunzip -c > files/etc/openclash/core/clash_tun
 wget -qO- $CLASH_META_URL | gunzip -c > files/etc/openclash/core/clash_meta
 # 给内核权限
